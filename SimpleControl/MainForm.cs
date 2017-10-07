@@ -17,6 +17,7 @@ namespace SimpleControl
         private IRemoteControl _remoteControl;
         private Image[] disabledImages = new Image[5];
         private Image[] enabledImages = new Image[5];
+        private MovementDirection _movementDirection = MovementDirection.Stop;
 
         public MainForm()
         {
@@ -79,43 +80,36 @@ namespace SimpleControl
             PortNumberTextBox.Enabled = enabled;
         }
 
-        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        private void panel1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            Debug.WriteLine("Main from KeyDown event!");
             if (_remoteControl == null)
             {
                 return;
             }
 
-            //sendControllCommand(e.KeyCode);
-            
+            changeMovementDirectionOnKeyDown(e.KeyCode);
         }
 
-        private void sendControllCommand(Keys key)
+        private void changeMovementDirectionOnKeyDown(Keys key)
         {
             try
             {
                 switch (key)
                 {
                     case Keys.Space:
-                        _remoteControl.Stop();
-                        setEnabledIcon(IconOrder.Stop);
+                        changeMovementToStop();
                         break;
                     case Keys.Up:
-                        _remoteControl.Forward();
-                        setEnabledIcon(IconOrder.Up);
+                        changeMovementToForward();
                         break;
                     case Keys.Down:
-                        _remoteControl.Backward();
-                        setEnabledIcon(IconOrder.Down);
+                        changeMovementToBackward();
                         break;
                     case Keys.Left:
-                        _remoteControl.Left();
-                        setEnabledIcon(IconOrder.Left);
+                        changeMovementToLeft();
                         break;
                     case Keys.Right:
-                        _remoteControl.Right();
-                        setEnabledIcon(IconOrder.Right);
+                        changeMovementToRight();
                         break;
                 }
             }
@@ -126,6 +120,56 @@ namespace SimpleControl
                 setIconsDisabled();
                 setInputsState(true);
                 MessageBox.Show($"Błąd połączenia: {rcError.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void changeMovementToStop()
+        {
+            if (_movementDirection != MovementDirection.Stop)
+            {
+                _remoteControl.Stop();
+                setEnabledIcon(IconOrder.Stop);
+                _movementDirection = MovementDirection.Stop;
+            }
+        }
+
+        private void changeMovementToForward()
+        {
+            if (_movementDirection != MovementDirection.Forward)
+            {
+                _remoteControl.Forward();
+                setEnabledIcon(IconOrder.Up);
+                _movementDirection = MovementDirection.Forward;
+            }
+        }
+
+        private void changeMovementToBackward()
+        {
+            if (_movementDirection != MovementDirection.Backward)
+            {
+                _remoteControl.Backward();
+                setEnabledIcon(IconOrder.Down);
+                _movementDirection = MovementDirection.Backward;
+            }
+        }
+
+        private void changeMovementToLeft()
+        {
+            if (_movementDirection != MovementDirection.Left)
+            {
+                _remoteControl.Left();
+                setEnabledIcon(IconOrder.Left);
+                _movementDirection = MovementDirection.Left;
+            }
+        }
+
+        private void changeMovementToRight()
+        {
+            if (_movementDirection != MovementDirection.Right)
+            {
+                _remoteControl.Right();
+                setEnabledIcon(IconOrder.Right);
+                _movementDirection = MovementDirection.Right;
             }
         }
 
@@ -168,14 +212,9 @@ namespace SimpleControl
 
         }
 
-        private void panel1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        private void MainForm_KeyUp(object sender, KeyEventArgs e)
         {
-            if (_remoteControl == null)
-            {
-                return;
-            }
-
-            sendControllCommand(e.KeyCode);
+            changeMovementToStop();
         }
     }
 }

@@ -48,6 +48,7 @@
     <Compile Include="IconOrder.cs" />
     <Compile Include="Infrastructure\IRemoteControl.cs" />
     <Compile Include="Infrastructure\RemoteControl.cs" />
+    <Compile Include="MovementDirectioncs.cs" />
     <Compile Include="RemoteControlException.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
