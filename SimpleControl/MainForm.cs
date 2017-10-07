@@ -81,13 +81,21 @@ namespace SimpleControl
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
+            Debug.WriteLine("Main from KeyDown event!");
             if (_remoteControl == null)
             {
                 return;
             }
+
+            //sendControllCommand(e.KeyCode);
+            
+        }
+
+        private void sendControllCommand(Keys key)
+        {
             try
             {
-                switch (e.KeyCode)
+                switch (key)
                 {
                     case Keys.Space:
                         _remoteControl.Stop();
@@ -127,11 +135,6 @@ namespace SimpleControl
                 _remoteControl.Dispose();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ConnectButton_Click(object sender, EventArgs e)
         {
             if (ConnectButton.Text == "Connect")
@@ -141,6 +144,7 @@ namespace SimpleControl
                     _remoteControl = new RemoteControl(IpAddressTextBox.Text, Int32.Parse(PortNumberTextBox.Text));
                     ConnectButton.Text = "Disconnect";
                     setInputsState(false);
+                    tableLayoutPanel1.Focus();
                 }
                 catch(Exception err)
                 {
@@ -157,6 +161,21 @@ namespace SimpleControl
                 setInputsState(true);
             }
             
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (_remoteControl == null)
+            {
+                return;
+            }
+
+            sendControllCommand(e.KeyCode);
         }
     }
 }

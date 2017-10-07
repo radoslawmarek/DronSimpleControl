@@ -62,6 +62,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(476, 73);
             this.panel1.TabIndex = 0;
+            this.panel1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panel1_PreviewKeyDown);
             // 
             // label2
             // 
@@ -71,7 +72,7 @@
             this.label2.Size = new System.Drawing.Size(42, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Port:";
-            this.label2.Click += new System.EventHandler(this.label1_Click);
+            this.label2.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panel1_PreviewKeyDown);
             // 
             // label1
             // 
@@ -81,7 +82,7 @@
             this.label1.Size = new System.Drawing.Size(89, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "IP address:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panel1_PreviewKeyDown);
             // 
             // PortNumberTextBox
             // 
@@ -90,6 +91,7 @@
             this.PortNumberTextBox.Size = new System.Drawing.Size(100, 26);
             this.PortNumberTextBox.TabIndex = 2;
             this.PortNumberTextBox.Text = "7777";
+            this.PortNumberTextBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panel1_PreviewKeyDown);
             // 
             // IpAddressTextBox
             // 
@@ -98,6 +100,7 @@
             this.IpAddressTextBox.Size = new System.Drawing.Size(165, 26);
             this.IpAddressTextBox.TabIndex = 1;
             this.IpAddressTextBox.Text = "192.168.1.71";
+            this.IpAddressTextBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panel1_PreviewKeyDown);
             // 
             // ConnectButton
             // 
@@ -108,6 +111,7 @@
             this.ConnectButton.Text = "Connect";
             this.ConnectButton.UseVisualStyleBackColor = true;
             this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
+            this.ConnectButton.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panel1_PreviewKeyDown);
             // 
             // tableLayoutPanel1
             // 
@@ -128,6 +132,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(476, 257);
             this.tableLayoutPanel1.TabIndex = 1;
+            this.tableLayoutPanel1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panel1_PreviewKeyDown);
             // 
             // IconUp
             // 
@@ -138,6 +143,7 @@
             this.IconUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.IconUp.TabIndex = 0;
             this.IconUp.TabStop = false;
+            this.IconUp.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panel1_PreviewKeyDown);
             // 
             // IconStop
             // 
@@ -148,6 +154,7 @@
             this.IconStop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.IconStop.TabIndex = 1;
             this.IconStop.TabStop = false;
+            this.IconStop.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panel1_PreviewKeyDown);
             // 
             // IconDown
             // 
@@ -158,6 +165,7 @@
             this.IconDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.IconDown.TabIndex = 2;
             this.IconDown.TabStop = false;
+            this.IconDown.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panel1_PreviewKeyDown);
             // 
             // IconLeft
             // 
@@ -168,6 +176,7 @@
             this.IconLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.IconLeft.TabIndex = 3;
             this.IconLeft.TabStop = false;
+            this.IconLeft.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panel1_PreviewKeyDown);
             // 
             // IconRight
             // 
@@ -178,6 +187,7 @@
             this.IconRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.IconRight.TabIndex = 4;
             this.IconRight.TabStop = false;
+            this.IconRight.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.panel1_PreviewKeyDown);
             // 
             // MainForm
             // 
@@ -194,6 +204,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dron Remote Control";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
