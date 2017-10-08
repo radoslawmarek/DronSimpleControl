@@ -106,10 +106,10 @@ namespace SimpleControl
                         changeMovementToBackward();
                         break;
                     case Keys.Left:
-                        changeMovementToLeft();
+                        changeMovementToRight();
                         break;
                     case Keys.Right:
-                        changeMovementToRight();
+                        changeMovementToLeft();
                         break;
                 }
             }
